@@ -11,16 +11,12 @@ const Trending = () => {
       try {
         const response = await axios.get(url);
         setTrending(response.data.coins);
-        console.log(response.data.coins);
+        // console.log(response.data.coins);
       } catch (error) {
         console.log("Error fetching data:", error);
       }
     };
     fetchData();
-    // axios.get(url).then((response) => {
-    //   setTrending(response.data.coins);
-    //   //   console.log(response.data.coins);
-    // });
   }, [url]);
 
   return (
