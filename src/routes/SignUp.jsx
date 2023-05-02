@@ -16,7 +16,7 @@ const SignUp = () => {
     setError("");
     try {
       await signUp(email, password);
-      console.log("User signed up" );
+      console.log("User signed up");
     } catch (e) {
       setError(e.message);
     }

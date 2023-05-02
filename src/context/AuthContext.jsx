@@ -14,12 +14,18 @@ const UserContext = createContext();
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
 
-  const signUp = (email, password) => {
-    createUserWithEmailAndPassword(auth, email, password);
-    return setDoc(doc(db, "users", email), {
-      watchList: [],
-    });
+  const signUp = async (email, password) => {
+    const result = await createUserWithEmailAndPassword(auth, email, password);
+    if (result.user) {
+      const userRef = doc(db, "users", result.user.uid);
+      await setDoc(userRef, {
+        email: email,
+        watchList: [],
+      });
+    }
   };
+  
+
   const signIn = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
   };

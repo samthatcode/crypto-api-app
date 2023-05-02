@@ -36,7 +36,7 @@ const Footer = () => {
                 Sign up for crypto news
               </p>
               <div className="py-4">
-                <form action="">
+                <form className="">
                   <input
                     className="bg-primary border border-input p-2 mr-2 w-full shadow-xl rounded-md md:w-auto"
                     type="text"
