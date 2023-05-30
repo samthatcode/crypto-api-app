@@ -8,6 +8,8 @@ const SignIn = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
+
 
   const { signIn } = UserAuth();
 
@@ -21,6 +23,10 @@ const SignIn = () => {
     } catch (e) {
       setError(e.message);
     }
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -47,7 +53,13 @@ const SignIn = () => {
                 className="w-full p-2 bg-primary border border-input rounded-lg"
                 type="password"
               />
-              <AiFillLock className="absolute right-2 top-3 text-gray-500" />
+               <button
+                type="button"
+                className="absolute right-3 top-2 text-gray-500"
+                onClick={togglePasswordVisibility}
+              >
+                {showPassword ? "Hide" : "Show"}
+              </button>
             </div>
           </div>
           <button className="w-full my-2 p-3 bg-button text-btnText rounded-md shadow-xl font-semibold">
